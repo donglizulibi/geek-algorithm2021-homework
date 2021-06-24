@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                  如果是用加原型链的方法，则都要用this
+                */
+
+
+
+        /**
+         * initialize your data structure here.
+         */
+        var MinStack = function() {
+            this.items = []
+        };
+
+        /** 
+         * @param {number} val
+         * @return {void}
+         */
+        MinStack.prototype.push = function(val) {
+            this.items.push(val)
+        };
+
+        /**
+         * @return {void}
+         */
+        MinStack.prototype.pop = function() {
+            if (this.items.length > 0) {
+                return this.items.pop()
+            }
+        };
+
+        /**
+         * @return {number}
+         */
+        MinStack.prototype.top = function() {
+            if (this.items.length > 0) {
+                return this.items[this.items.length - 1]
+            }
+        };
+
+        /**
+         * @return {number}
+         */
+        MinStack.prototype.getMin = function() {
+            if (this.items.length > 0) {
+                return Math.min(...this.items) //使用语法糖 不改变原数组
+                    // let arr = []
+                    // for (let i = 0; i < this.items.length; i++) {
+                    //     arr.push(this.items[i])
+                    // }
+                    // for (let i = 1; i < arr.length; i++) {
+                    //     if (arr[0] > arr[i]) {
+                    //         let box = arr[0]
+                    //         arr[0] = arr[i]
+                    //         arr[i] = box
+                    //     }
+                    // }
+                    // console.log(arr)
+                    // return arr[0]
+            }
+        };
+
+        /**
+         * Your MinStack object will be instantiated and called as such:
+         * var obj = new MinStack()
+         * obj.push(val)
+         * obj.pop()
+         * var param_3 = obj.top()
+         * var param_4 = obj.getMin()
+         */
+
+
+        var min = new MinStack()
+        min.push(-2)
+        min.push(0)
+        min.push(-3)
+        min.getMin()
+            // min.pop()
+            // min.top()
+            // min.getMin()
+    </script>
+</body>
+
+</html>

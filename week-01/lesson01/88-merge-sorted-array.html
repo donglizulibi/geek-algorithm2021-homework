@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                定义三个指针
+                第一个遍历第一个数组
+                第二个遍历第二个 第三个遍历整个数组 把两个短数组比较后的项目放到第三个数组中
+                需要考虑三个指针不能小于0的情况
+                */
+        var merge = function(nums1, m, nums2, n) {
+            let i = m - 1,
+                j = n - 1;
+            for (let k = m + n - 1; k >= 0; k--) {
+                if (j < 0 || (i >= 0 && nums1[i] >= nums2[j])) {
+                    nums1[k] = nums1[i]
+                    i--
+                } else {
+                    nums1[k] = nums2[j]
+                    j--
+                }
+            }
+        };
+
+
+        // 使用js语法糖，先把两个数组合并，再排序
+        var merge = function(nums1, m, nums2, n) {
+            let j = 0
+            for (let i = m; i < m + n; i++) {
+                nums1[i] = nums2[j]
+                j++
+            }
+            return nums1.sort((a, b) => {
+                return a - b
+            })
+        };
+    </script>
+</body>
+
+</html>

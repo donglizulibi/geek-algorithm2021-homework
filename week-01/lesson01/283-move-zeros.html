@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                先把不是零的项目判断出来放在数组的前面，再在后面都放上0
+                */
+        var moveZeroes = function(nums) {
+            let n = 0;
+            for (let i = 0; i < nums.length; i++) {
+                if (nums[i] != 0) {
+                    nums[n] = nums[i]
+                    n++
+                }
+            }
+            for (let j = n; j < nums.length; j++) {
+                nums[j] = 0
+            }
+        };
+    </script>
+</body>
+
+</html>

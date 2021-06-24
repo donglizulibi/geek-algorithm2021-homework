@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /*
+                
+                */
+        var removeDuplicates = function(nums) {
+            let n = 0;
+            for (let i = 0; i < nums.length; i++) {
+                if (i == 0 || nums[i] != nums[i - 1]) {
+                    nums[n] = nums[i]
+                    n++
+                }
+                //如果出现nums[i] == nums[i - 1]的情况，则不执行if里面的语句
+                //n的数值不变，但是for循环继续往前走，i变大一位，继续找下一个不同的值
+            }
+            // console.log(nums)
+            return n
+        };
+        let a = [1, 1, 2]
+        let b = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
+        console.log(removeDuplicates(a))
+        console.log(removeDuplicates(b))
+
+        /*
+        经过函数操作过的数组为
+        [1, 2, 2]
+        [0, 1, 2, 3, 4, 2, 2, 3, 3, 4]
+        */
+
+
+        /*
+        原函数只返回一个“变化操作后的数组中不出现重复项的个数”
+        后面再把这个数值作为一个循环的边界条件来遍历“变化后的数组”
+        取出一个新数组
+
+        // nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝
+        const len = removeDuplicates(nums);
+        // 在函数里修改输入数组对于调用者是可见的。
+        // 根据你的函数返回的长度, 它会打印出数组中 该长度范围内 的所有元素。
+        for (let i = 0; i < len; i++) {  
+            print(nums[i]);
+        }
+
+        */
+    </script>
+</body>
+
+</html>
