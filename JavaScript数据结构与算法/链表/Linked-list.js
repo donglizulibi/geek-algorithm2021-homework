@@ -89,6 +89,11 @@ var LinkedList = function() {
                     index++
                 }
                 previous.next = current.next
+                    /*
+                    本来previous的next是current，而current的next是current.next
+                    现在让previous.next = current.next
+                    就相当于跳过current，也就是删掉了这一项
+                    */
             }
             length--
             return current
