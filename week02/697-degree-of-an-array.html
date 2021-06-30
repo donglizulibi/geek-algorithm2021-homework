@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * @param {number[]} nums
+         * @return {number}
+         */
+        var findShortestSubArray = function(nums) {
+            let max = 0;
+            let map = new Map();
+            // 数组去重，保留唯一值
+            let newArr = [...new Set(nums)];
+            // 每个数去与原数组比对，相同则次数加一
+            for (let i = 0; i < newArr.length; i++) {
+                // 每次计数完一个数都将次数置为0
+                let count = 0;
+                for (let j = 0; j < nums.length; j++) {
+                    // 当出现重复数值时count + 1
+                    if (newArr[i] == nums[j]) {
+                        count++;
+                    }
+                }
+                // 求出最大频数
+                max = Math.max(max, count);
+                // 存储每个值以及与之对应的频数
+                map.set(newArr[i], count);
+            }
+            // 拥有相同大小的度的最短连续子数组
+            let interval = 0;
+            // 遍历Map
+            map.forEach((val, key) => {
+                // 当重复次数和最大频数相同时
+                if (val == max) {
+                    // 查找该值在原数组中的开始及结束下标
+                    let start = nums.indexOf(key);
+                    let end = nums.lastIndexOf(key);
+                    // 当子数组长度为初始值时
+                    if (interval == 0) {
+                        interval = end - start + 1;
+                    } else {
+                        interval = end - start + 1 > interval ? interval : end - start + 1;
+                    }
+                }
+            });
+            return interval;
+        };
+    </script>
+</body>
+
+</html>

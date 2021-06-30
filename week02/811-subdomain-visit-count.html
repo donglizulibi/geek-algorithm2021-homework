@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /**
+         * @param {string[]} cpdomains
+         * @return {string[]}
+         */
+        var subdomainVisits = function(cpdomains) {
+            // 新建map
+            let map = new Map()
+            cpdomains.forEach(item => {
+                // 取出数量以及域名
+                let [count, realmName] = item.split(' ')
+                    // 数量需要转为数字,否则相加会有问题
+                count = Number(count)
+                    // 设置域名 和 数量
+                map.set(realmName, map.has(realmName) ? map.get(realmName) + count : count)
+                    // 如果能找到'.',证明有上一级点域名
+                while (realmName.includes('.')) {
+                    // 拿到上一级域名
+                    realmName = realmName.substr(realmName.indexOf('.') + 1)
+                        // 设置域名和数量
+                    map.set(realmName, map.has(realmName) ? map.get(realmName) + count : count)
+                }
+            })
+            let result = []
+            for (var [key, value] of map) {
+                result.push(`${value} ${key}`)
+            }
+            return result
+        };
+    </script>
+</body>
+
+</html>
