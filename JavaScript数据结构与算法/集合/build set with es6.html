@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 合并两个数组 并去重 和 排序
+        var arr1 = [1, 2, 3, 4, 5]
+        var arr2 = [3, 4, 5, 6, 7]
+        var arr3 = new Set([...arr1, ...arr2])
+        console.log(arr3)
+
+        var a = new Set([1, 2, 3])
+        var b = new Set([4, 3, 2])
+
+        // 并集
+        var union = new Set([...a, ...b])
+            // 交集
+        var intersect = new Set([...a].filter(x => b.has(x)))
+            // 差集
+        var different = new Set([...a].filter(x => !b.has(x)))
+    </script>
+</body>
+
+</html>
